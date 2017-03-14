@@ -1,10 +1,19 @@
 module Main where
 
-askUser :: String -> IO String
-askUser s = putStrLn s >> getLine
+import System.Exit (exitSuccess)
 
-evalQuery :: String -> String
-evalQuery query = "Not implemented yet"
+jarvisSay :: String -> IO ()
+jarvisSay s = putStrLn $ "jarvis > " ++ s  
+
+askUser :: String -> IO String
+askUser s = jarvisSay s >> getLine
+
+evalQuery :: String -> IO ()
+evalQuery query = case getWords' query of
+                    ("help":_) -> jarvisSay "Type one of the following commands : help, bye"
+                    ("why":_) -> jarvisSay $ "Let me think... Hum... Nope. Sorry I don't know " ++ query ++ " :("
+                    ("bye":_) -> jarvisSay "See you soon !" >> exitSuccess
+                    otherwise -> jarvisSay "Sorry, I didn't understand the request"
 
 getWords :: String -> [String]
 getWords s = wordsRoutine s "" []
@@ -33,6 +42,6 @@ main :: IO ()
 main = loop
   where
     loop = do
-      line <- askUser "What do you want to do ?"
-      putStrLn $ evalQuery line
+      line <- askUser "How can I help you ?"
+      evalQuery line
       loop
