@@ -11,6 +11,8 @@ jarvisSay s = putStrLn $ "jarvis > " ++ s
 askUser :: String -> IO String
 askUser s = jarvisSay s >> getLine
 
+-- TODO : Jarvis doit réagir différemment en fonction de la commande qu'on tape ("help", "why", "bye", "ping", ...)
+-- NOTE : utiliser la fonction `getWords` qu'on a implémenté pour récupérer la commande
 evalQuery :: String -> IO ()
 evalQuery query = case getWords' query of
                     ("help":_) -> jarvisSay "Type one of the following commands : help, bye"
@@ -28,6 +30,7 @@ whyCommand query = jarvisSay $ "Let me think... Hum... Nope. Sorry I don't know 
 byeCommand :: IO ()
 byeCommand = jarvisSay "See you soon !" >> exitSuccess
 
+-- TODO : Implémenter la fonction `pingCommand` qui utilisera le premier mot après la commande pour chercher un contact
 pingCommand :: [String] -> IO ()
 pingCommand [] = jarvisSay "Godamit, I don't know who to ping !"
 pingCommand (name:_) = case findContactByName name contactsList of

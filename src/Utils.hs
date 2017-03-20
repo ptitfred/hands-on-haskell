@@ -8,6 +8,9 @@ safeHead (x:_) = Just x
 
 
 -- NOTE : an example for recursion
+-- TODO : Implémenter la fonction `getWords` qui sépare une chaîne de caractère en un tableau de mots
+
+-- getWords :: ???
 getWords :: String -> [String]
 getWords s = wordsRoutine s "" []
   where
