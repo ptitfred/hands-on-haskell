@@ -1,6 +1,5 @@
 module Main where
 
-
 import Jarvis
 
 main :: IO ()
