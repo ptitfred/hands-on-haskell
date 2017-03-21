@@ -1,5 +1,7 @@
 module Main where
 
+import Example as E
+
 import Jarvis
 
 main :: IO ()
