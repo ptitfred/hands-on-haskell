@@ -134,13 +134,13 @@ data Fruit
     | Unknown
 
 -- Pour définir un type on utilise `data`
--- MyType est le nom du type : utilisé dans les signatures de fonctions ou dans d'autres types
+-- Fruit est le nom du type : utilisé dans les signatures de fonctions ou dans d'autres types
 -- Apple, Banana, Unknown sont des constructeurs
 
 -- NOTE : les constructeurs sont des fonctions
--- Apple :: String -> MyType
--- Banana :: Int -> MyType
--- Unknown :: MyType
+-- Apple :: String -> Fruit
+-- Banana :: Int -> Fruit
+-- Unknown :: Fruit
 
 someFruits :: [Fruit]
 someFruits = [ Unknown, Banana 2, Apple "golden", Apple "the other one", Banana 6, Unknown ]
